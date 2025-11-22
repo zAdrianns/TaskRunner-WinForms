@@ -28,7 +28,7 @@ namespace ObjetivaScripts.SQL
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    MessageBox.Show("Correções feitas com sucesso", "Deu bom paizão", MessageBoxButtons.OK);
+                    MessageBox.Show("Correções feitas com sucesso", "Sucesso", MessageBoxButtons.OK);
                 }
                 catch (Exception ex)
                 {

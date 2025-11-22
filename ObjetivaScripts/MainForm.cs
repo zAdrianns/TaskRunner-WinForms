@@ -1,4 +1,5 @@
 ﻿using ObjetivaScripts.Bat_Files;
+using ObjetivaScripts.Copy_SQL_Scripts;
 using ObjetivaScripts.SQL;
 using ObjetivaScripts.Utilities;
 using System;
@@ -26,8 +27,10 @@ namespace ObjetivaScripts
 
             ToolTip toolTip1 = new ToolTip();
             toolTip1.SetToolTip(this.btnTestarConexao, "Testar conexão com banco de dados");
+            toolTip1.SetToolTip(this.Script1, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
         }
 
+        //TAB 1 - Scripts Objetiva
         private void btnUpdCustosFilial50_Click(object sender, EventArgs e)
         {
             DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnUpdCustosFilial50.Text}?", btnUpdCustosFilial50.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -239,6 +242,9 @@ namespace ObjetivaScripts
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //TAB 2 - SQL Scripts
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string servidorSelecionado = comboBox1.SelectedItem.ToString();
@@ -312,6 +318,19 @@ namespace ObjetivaScripts
                     }
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //TAB 3 - Testes
+        private void Script1_Click(object sender, EventArgs e)
+        {
+            Form testando = new Form();
+            Tab3FormCreator.TextoScript(testando, ResetarTransportedaNotaFiscal.script);
+            testando.ShowDialog();
         }
     }
 }

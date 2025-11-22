@@ -47,20 +47,27 @@
             this.btnUpdCustosFilial50 = new System.Windows.Forms.Button();
             this.LabTitlePg1 = new System.Windows.Forms.Label();
             this.pg2SqlRoutineScripts = new System.Windows.Forms.TabPage();
+            this.btnUpdateCadSys = new System.Windows.Forms.Button();
             this.pg2TxtSelecionarServidor = new System.Windows.Forms.Label();
             this.btnTestarConexao = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnUpdateCadSys = new System.Windows.Forms.Button();
+            this.CopyScripts = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Script1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
             this.pg2SqlRoutineScripts.SuspendLayout();
+            this.CopyScripts.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.Pg1BatFiles);
             this.tabControl1.Controls.Add(this.pg2SqlRoutineScripts);
+            this.tabControl1.Controls.Add(this.CopyScripts);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -75,7 +82,7 @@
             this.Pg1BatFiles.Padding = new System.Windows.Forms.Padding(3);
             this.Pg1BatFiles.Size = new System.Drawing.Size(579, 444);
             this.Pg1BatFiles.TabIndex = 0;
-            this.Pg1BatFiles.Text = ".BAT FILES";
+            this.Pg1BatFiles.Text = ".bat Files";
             this.Pg1BatFiles.UseVisualStyleBackColor = true;
             // 
             // GroupBoxPg1
@@ -262,8 +269,18 @@
             this.pg2SqlRoutineScripts.Padding = new System.Windows.Forms.Padding(3);
             this.pg2SqlRoutineScripts.Size = new System.Drawing.Size(579, 444);
             this.pg2SqlRoutineScripts.TabIndex = 1;
-            this.pg2SqlRoutineScripts.Text = "SQL ROUTINE SCRIPTS";
+            this.pg2SqlRoutineScripts.Text = "SQL Routine Scripts";
             this.pg2SqlRoutineScripts.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateCadSys
+            // 
+            this.btnUpdateCadSys.Location = new System.Drawing.Point(23, 73);
+            this.btnUpdateCadSys.Name = "btnUpdateCadSys";
+            this.btnUpdateCadSys.Size = new System.Drawing.Size(233, 34);
+            this.btnUpdateCadSys.TabIndex = 5;
+            this.btnUpdateCadSys.Text = "Update CadSys";
+            this.btnUpdateCadSys.UseVisualStyleBackColor = true;
+            this.btnUpdateCadSys.Click += new System.EventHandler(this.btnUpdateCadSys_Click);
             // 
             // pg2TxtSelecionarServidor
             // 
@@ -299,24 +316,55 @@
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // btnUpdateCadSys
+            // CopyScripts
             // 
-            this.btnUpdateCadSys.Location = new System.Drawing.Point(23, 73);
-            this.btnUpdateCadSys.Name = "btnUpdateCadSys";
-            this.btnUpdateCadSys.Size = new System.Drawing.Size(233, 34);
-            this.btnUpdateCadSys.TabIndex = 5;
-            this.btnUpdateCadSys.Text = "Update CadSys";
-            this.btnUpdateCadSys.UseVisualStyleBackColor = true;
-            this.btnUpdateCadSys.Click += new System.EventHandler(this.btnUpdateCadSys_Click);
+            this.CopyScripts.Controls.Add(this.groupBox1);
+            this.CopyScripts.Location = new System.Drawing.Point(4, 25);
+            this.CopyScripts.Name = "CopyScripts";
+            this.CopyScripts.Padding = new System.Windows.Forms.Padding(3);
+            this.CopyScripts.Size = new System.Drawing.Size(579, 444);
+            this.CopyScripts.TabIndex = 2;
+            this.CopyScripts.Text = "Scripts Text";
+            this.CopyScripts.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.Script1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(567, 432);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            // 
+            // Script1
+            // 
+            this.Script1.Location = new System.Drawing.Point(23, 73);
+            this.Script1.Name = "Script1";
+            this.Script1.Size = new System.Drawing.Size(233, 34);
+            this.Script1.TabIndex = 0;
+            this.Script1.Text = "Resetar Transporte da Nota Fiscal";
+            this.Script1.UseVisualStyleBackColor = true;
+            this.Script1.Click += new System.EventHandler(this.Script1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(182, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(198, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Scripts para Copiar";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 497);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ObjetivaScripts";
             this.tabControl1.ResumeLayout(false);
@@ -325,6 +373,9 @@
             this.GroupBoxPg1.PerformLayout();
             this.pg2SqlRoutineScripts.ResumeLayout(false);
             this.pg2SqlRoutineScripts.PerformLayout();
+            this.CopyScripts.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,6 +405,10 @@
         private System.Windows.Forms.Button btnTestarConexao;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnUpdateCadSys;
+        private System.Windows.Forms.TabPage CopyScripts;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button Script1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
