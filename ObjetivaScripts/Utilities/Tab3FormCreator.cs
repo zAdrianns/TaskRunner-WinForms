@@ -12,8 +12,9 @@ namespace ObjetivaScripts.Utilities
     {
         public static Form TextoScript(Form tela, string texto)
         {
-            tela.Text = "Teste";
+            tela.Text = "Script";
             tela.Size = new Size(600, 500);
+            tela.FormBorderStyle = FormBorderStyle.FixedSingle;
             tela.StartPosition = FormStartPosition.CenterScreen;
 
             RichTextBox txt = new RichTextBox()

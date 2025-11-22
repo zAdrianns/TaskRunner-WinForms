@@ -85,7 +85,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LiberacaoScript";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LiberacaoScript";
+            this.Text = "Controle de Acesso";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Pg1BatFiles = new System.Windows.Forms.TabPage();
             this.GroupBoxPg1 = new System.Windows.Forms.GroupBox();
@@ -53,8 +54,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.CopyScripts = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Script1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.Script1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
@@ -337,16 +338,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // Script1
-            // 
-            this.Script1.Location = new System.Drawing.Point(23, 73);
-            this.Script1.Name = "Script1";
-            this.Script1.Size = new System.Drawing.Size(233, 34);
-            this.Script1.TabIndex = 0;
-            this.Script1.Text = "Resetar Transporte da Nota Fiscal";
-            this.Script1.UseVisualStyleBackColor = true;
-            this.Script1.Click += new System.EventHandler(this.Script1_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -357,6 +348,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Scripts para Copiar";
             // 
+            // Script1
+            // 
+            this.Script1.Location = new System.Drawing.Point(23, 73);
+            this.Script1.Name = "Script1";
+            this.Script1.Size = new System.Drawing.Size(233, 34);
+            this.Script1.TabIndex = 0;
+            this.Script1.Text = "Resetar Transporte da Nota Fiscal";
+            this.Script1.UseVisualStyleBackColor = true;
+            this.Script1.Click += new System.EventHandler(this.Script1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -364,6 +365,7 @@
             this.ClientSize = new System.Drawing.Size(611, 497);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ObjetivaScripts";

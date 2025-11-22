@@ -26,7 +26,7 @@ namespace ObjetivaScripts
             }
             else
             {
-                MessageBox.Show("Senha Inválida.");
+                MessageBox.Show("Senha Incorreta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -320,11 +320,6 @@ namespace ObjetivaScripts
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //TAB 3 - Testes
         private void Script1_Click(object sender, EventArgs e)
         {
