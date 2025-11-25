@@ -13,7 +13,7 @@ namespace ObjetivaScripts.Utilities
         public static Form TextoScript(Form tela, string texto)
         {
             tela.Text = "Script";
-            tela.Size = new Size(800, 600);
+            tela.Size = new Size(1000, 800);
             tela.FormBorderStyle = FormBorderStyle.FixedSingle;
             tela.StartPosition = FormStartPosition.CenterScreen;
 
@@ -23,7 +23,7 @@ namespace ObjetivaScripts.Utilities
                 Text = texto,
                 ReadOnly = true,
                 Location = new Point(0, 0),
-                Size = new Size(800, 600)
+                Size = new Size(1000, 800)
             };
             tela.Controls.Add(txt);
             return tela;

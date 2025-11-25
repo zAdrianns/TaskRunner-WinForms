@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{830679B4-3BCC-4315-A3AE-5A10CD03A4F6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ObjetivaScripts</RootNamespace>
-    <AssemblyName>ObjetivaScripts</AssemblyName>
+    <RootNamespace>TaskRunner</RootNamespace>
+    <AssemblyName>TaskRunner</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Design-sem-nome-_1_ %281%29.ico</ApplicationIcon>
+    <ApplicationIcon>Design-sem-nome-_3_.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -97,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -113,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Design-sem-nome-_1_ %281%29.ico" />
+    <Content Include="Design-sem-nome-_2_.ico" />
+    <Content Include="Design-sem-nome-_3_.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
