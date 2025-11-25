@@ -27,7 +27,8 @@ namespace ObjetivaScripts
 
             ToolTip toolTip1 = new ToolTip();
             toolTip1.SetToolTip(this.btnTestarConexao, "Testar conexão com banco de dados");
-            toolTip1.SetToolTip(this.Script1, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
+            toolTip1.SetToolTip(this.btnResetTransportNF, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
+            toolTip1.SetToolTip(this.btnDupChaveAcesso, "Muda chave de acesso quando ocorre o erro de duplicidade de chave de acesso.");
         }
 
         //TAB 1 - Scripts Objetiva
@@ -319,13 +320,126 @@ namespace ObjetivaScripts
                 }
             }
         }
+        private void btnAttIbsCbsNCM_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando ATUALIZA IBSCBS COM BASE NO NCM?", "ATUALIZA IBSCBS COM BASE NO NCM", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Query.AtualizaIbsCbsNCM();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
 
         //TAB 3 - Testes
-        private void Script1_Click(object sender, EventArgs e)
+        private void btnResetTransportNF_Click(object sender, EventArgs e)
         {
-            Form testando = new Form();
-            Tab3FormCreator.TextoScript(testando, ResetarTransportedaNotaFiscal.script);
-            testando.ShowDialog();
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.ResetarTransporteNF);
+            ScriptforCopy.ShowDialog();
         }
+
+        private void btnDupChaveAcesso_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.DuplicidadeChaveACesso);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnCNPJautDownlo_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.CnpjAutorizadoDownload);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnDescontoRateado_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.DescontoRateado);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnDesvPreDoc_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.DesvinculaPreDoc);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnMudaOpNF_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.MudaOperacaoNF);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnMudaModelNF_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.MudaModeloNF);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnNfPendenteEmitd_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.NfPendenteTransmitida);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnPreDocAltEstacao_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.PreDocAlteradoEmOutraEstacao);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnAltStatPreDoc_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.AlterarStatusPreDoc);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnRefaturaCErro_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.ExcluirRefaturaErro);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnRefInvisivel_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.RemoverRefInvisivel);
+            ScriptforCopy.ShowDialog();
+        }
+
+        private void btnInutilizarNFAut_Click(object sender, EventArgs e)
+        {
+            Form ScriptforCopy = new Form();
+            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
+            ScriptforCopy.ShowDialog();
+        }
+
+        
     }
 }

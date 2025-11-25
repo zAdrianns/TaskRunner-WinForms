@@ -22,6 +22,7 @@ namespace ObjetivaScripts
             if (txtSenha.Text.Equals("SA_0bjetiva"))
             {
                 this.DialogResult = DialogResult.OK;
+                txtSenha.Text = "";
                 this.Close();
             }
             else
@@ -38,6 +39,7 @@ namespace ObjetivaScripts
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+            txtSenha.Text = "";
             this.Close();
         }
     }
