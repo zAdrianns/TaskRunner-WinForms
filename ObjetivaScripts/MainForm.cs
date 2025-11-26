@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskRunner;
+using TaskRunner.Bat_Files;
 
 namespace ObjetivaScripts
 {
@@ -28,7 +29,51 @@ namespace ObjetivaScripts
             ListarServidores();
 
             ToolTip toolTip1 = new ToolTip();
+
+            //Tab2
+
             toolTip1.SetToolTip(this.btnTestarConexao, "Testar conexão com banco de dados");
+            toolTip1.SetToolTip(this.btnUpdateCadSys, "update cadsys set dtimplantacao = '01/01/2000'");
+            toolTip1.SetToolTip(this.btnLimparLog, "DBCC SHRINKDATABASE(Empresario, 0) WITH NO_INFOMSGS");
+            toolTip1.SetToolTip(this.btnRecriaIndice, @"
+USE EMPRESARIO
+DECLARE @COMANDO VARCHAR(MAX)
+DECLARE DB_CURSOR CURSOR FOR SELECT NAME FROM SYS.TABLES
+OPEN DB_CURSOR 
+FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+WHILE @@FETCH_STATUS = 0 
+BEGIN 
+	SET @COMANDO = ('ALTER INDEX ALL ON ' + @comando + ' REBUILD')
+	EXEC (@COMANDO)
+    FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+END 
+CLOSE DB_CURSOR 
+DEALLOCATE DB_CURSOR
+");
+            toolTip1.SetToolTip(this.btnRecriarEstatBanco, @"
+DECLARE @COMANDO VARCHAR(MAX)
+
+DECLARE DB_CURSOR CURSOR FOR SELECT NAME FROM SYS.TABLES ORDER BY name
+
+OPEN DB_CURSOR 
+
+FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+
+WHILE @@FETCH_STATUS = 0 
+BEGIN 
+	--SET @COMANDO = ('ALTER INDEX ALL ON ' + @comando + ' REBUILD')
+	SET @COMANDO = ('UPDATE STATISTICS ' + @comando + ' WITH FULLSCAN')
+	PRINT @COMANDO
+	EXEC (@COMANDO)
+
+    FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+END 
+
+CLOSE DB_CURSOR 
+DEALLOCATE DB_CURSOR
+");
+
+            //tab3
             toolTip1.SetToolTip(this.btnResetTransportNF, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
             toolTip1.SetToolTip(this.btnDupChaveAcesso, "Muda chave de acesso quando ocorre o erro de duplicidade de chave de acesso.");
         }
@@ -41,7 +86,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(AtualizarCustosAPartirFilial50.comando);
+                    TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirFilial50);
                 }
             }
             catch (Exception ex)
@@ -57,7 +102,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(AtualizarCustosAPartirEntrada.comando);
+                    TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirEntrada);
                 }
             }
             catch (Exception ex)
@@ -72,7 +117,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(RealizarBackup.comando);
+                    TempFile.ExecuteTempFile(BatFiles.RealizarBackup);
                 }
             }
             catch (Exception ex)
@@ -87,7 +132,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(FinalizarTarefasVarejo.comando);
+                    TempFile.ExecuteTempFile(BatFiles.FinalizarTarefasObjVarejo);
                 }
             }
             catch (Exception ex)
@@ -102,7 +147,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(EncerrarUniDanfe.comando);
+                    TempFile.ExecuteTempFile(BatFiles.EncerrarUniDanfe);
                 }
             }
             catch (Exception ex)
@@ -117,7 +162,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(DeleteDLLECF.comando);
+                    TempFile.ExecuteTempFile(BatFiles.DeleteDllECF);
                 }
             }
             catch (Exception ex)
@@ -132,7 +177,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(ClearFilaImpressao.comando);
+                    TempFile.ExecuteTempFile(BatFiles.LimparFilaImpressao);
                 }
             }
             catch (Exception ex)
@@ -147,7 +192,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(PermObjetivaC.comando);
+                    TempFile.ExecuteTempFile(BatFiles.PermissaoObjC);
                 }
             }
             catch (Exception ex)
@@ -162,7 +207,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(PermObjetivaD.comando);
+                    TempFile.ExecuteTempFile(BatFiles.PermissaoObjD);
                 }
             }
             catch (Exception ex)
@@ -177,7 +222,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(IniciarSQLService.comando);
+                    TempFile.ExecuteTempFile(BatFiles.iniciarSqlService);
                 }
             }
             catch (Exception ex)
@@ -192,7 +237,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(LiberarSQLFirewall.comando);
+                    TempFile.ExecuteTempFile(BatFiles.LiberarSQLFirewall);
                 }
             }
             catch (Exception ex)
@@ -207,7 +252,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(RecriarEstatisticaBD.comando);
+                    TempFile.ExecuteTempFile(BatFiles.RecriaEstatisticaBD);
                 }
             }
             catch (Exception ex)
@@ -222,7 +267,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(IndexarBanco.comando);
+                    TempFile.ExecuteTempFile(BatFiles.IndexarBanco);
                 }
             }
             catch (Exception ex)
@@ -237,7 +282,7 @@ namespace ObjetivaScripts
             {
                 if (msg == DialogResult.Yes)
                 {
-                    TempFile.ExecuteTempFile(ExcluirRegistroObjetiva.comando);
+                    TempFile.ExecuteTempFile(BatFiles.ExcluirRegistroObjetiva);
                 }
             }
             catch (Exception ex)
@@ -350,7 +395,91 @@ namespace ObjetivaScripts
             }
         }
 
-        //TAB 3 - Testes
+        private void btnLimparLog_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Limpar Log?", "Limpar Log", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Query.LimparLog();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnRecriaIndice_Click_1(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Recria Indice?", "Recria Indice", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Query.RecriaIndice();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnRecriarEstatBanco_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Recria Estatisticas Banco?", "Recria Estatisticas Banco", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Query.RecriaEstatisticasBanco();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
+
+        //TAB 3 - Scripts Text
         private void btnResetTransportNF_Click(object sender, EventArgs e)
         {
             Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.ResetarTransporteNF);
@@ -428,5 +557,7 @@ namespace ObjetivaScripts
             Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
             scrptCopy.ShowDialog();
         }
+
+        
     }
 }

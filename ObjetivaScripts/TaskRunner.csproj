@@ -50,20 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bat Files\AtualizarCustosAPartirEntrada.cs" />
-    <Compile Include="Bat Files\AtualizarCustosAPartirFilial50.cs" />
-    <Compile Include="Bat Files\ClearFilaImpressao.cs" />
-    <Compile Include="Bat Files\DeleteDLLECF.cs" />
-    <Compile Include="Bat Files\EncerrarUniDanfe.cs" />
-    <Compile Include="Bat Files\ExcluirRegistroObjetiva.cs" />
-    <Compile Include="Bat Files\FinalizarTarefasVarejo.cs" />
-    <Compile Include="Bat Files\IndexarBanco.cs" />
-    <Compile Include="Bat Files\IniciarSQLService.cs" />
-    <Compile Include="Bat Files\LiberarSQLFirewall.cs" />
-    <Compile Include="Bat Files\PermObjetivaC.cs" />
-    <Compile Include="Bat Files\PermObjetivaD.cs" />
-    <Compile Include="Bat Files\RealizarBackup.cs" />
-    <Compile Include="Bat Files\RecriarEstatisticaBD.cs" />
+    <Compile Include="Bat Files\BatFiles.cs" />
     <Compile Include="Copy SQL Scripts\ScriptsTexts.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

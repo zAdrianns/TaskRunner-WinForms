@@ -242,5 +242,121 @@ ORDER BY E.IBSCBSGRUPOID;
             }
         }
 
+        public static void LimparLog()
+        {
+            using (SqlConnection con = new SqlConnection(SqlConn.ConnString))
+            {
+                try
+                {
+                    con.Open();
+
+                    string limpar =
+                        "DBCC SHRINKDATABASE(Empresario, 0) WITH NO_INFOMSGS";
+
+                    SqlCommand cmd = new SqlCommand(limpar, con)
+                    {
+                        CommandTimeout = 600
+                    };
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Correções feitas com sucesso", "Sucesso", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public static void RecriaIndice()
+        {
+            using (SqlConnection con = new SqlConnection(SqlConn.ConnString))
+            {
+                try
+                {
+                    con.Open();
+
+                    string recriarInd =
+                        @"
+USE EMPRESARIO
+DECLARE @COMANDO VARCHAR(MAX)
+DECLARE DB_CURSOR CURSOR FOR SELECT NAME FROM SYS.TABLES
+OPEN DB_CURSOR 
+FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+WHILE @@FETCH_STATUS = 0 
+BEGIN 
+	SET @COMANDO = ('ALTER INDEX ALL ON ' + @comando + ' REBUILD')
+	EXEC (@COMANDO)
+    FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+END 
+CLOSE DB_CURSOR 
+DEALLOCATE DB_CURSOR
+";
+
+                    SqlCommand cmd = new SqlCommand(recriarInd, con)
+                    {
+                        CommandTimeout = 600
+                    };
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Correções feitas com sucesso", "Sucesso", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public static void RecriaEstatisticasBanco()
+        {
+            using (SqlConnection con = new SqlConnection(SqlConn.ConnString))
+            {
+                try
+                {
+                    con.Open();
+
+                    string recriarEstatisticaBD =
+                        @"
+DECLARE @COMANDO VARCHAR(MAX)
+
+DECLARE DB_CURSOR CURSOR FOR SELECT NAME FROM SYS.TABLES ORDER BY name
+
+OPEN DB_CURSOR 
+
+FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+
+WHILE @@FETCH_STATUS = 0 
+BEGIN 
+	--SET @COMANDO = ('ALTER INDEX ALL ON ' + @comando + ' REBUILD')
+	SET @COMANDO = ('UPDATE STATISTICS ' + @comando + ' WITH FULLSCAN')
+	PRINT @COMANDO
+	EXEC (@COMANDO)
+
+    FETCH NEXT FROM DB_CURSOR INTO @COMANDO
+END 
+
+CLOSE DB_CURSOR 
+DEALLOCATE DB_CURSOR
+";
+
+                    SqlCommand cmd = new SqlCommand(recriarEstatisticaBD, con)
+                    {
+                        CommandTimeout = 600
+                    };
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Correções feitas com sucesso", "Sucesso", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
