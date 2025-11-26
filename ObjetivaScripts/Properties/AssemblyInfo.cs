@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ObjetivaScripts")]
+[assembly: AssemblyTitle("TaskRunner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ReviOS 11 24.12")]
-[assembly: AssemblyProduct("ObjetivaScripts")]
+[assembly: AssemblyProduct("TaskRunner")]
 [assembly: AssemblyCopyright("Copyright © ReviOS 11 24.12 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

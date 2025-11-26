@@ -16,5 +16,10 @@ namespace TaskRunner
         {
             InitializeComponent();
         }
+
+        private void ScriptsParaCopiar_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

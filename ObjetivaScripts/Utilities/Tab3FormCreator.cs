@@ -21,7 +21,21 @@ namespace ObjetivaScripts.Utilities
                 Size = new Size(1000, 800)
             };
             tela.Controls.Add(txt);
+
+            tela.FormClosed += (s, e) =>
+            {
+                txt.Clear();
+                tela.Controls.Remove(txt);
+                txt.Dispose();
+            };
+
             return tela;
+
+        }
+
+        private static void Tela_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

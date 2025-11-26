@@ -41,6 +41,7 @@
             this.Name = "ScriptsParaCopiar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scripts";
+            this.Load += new System.EventHandler(this.ScriptsParaCopiar_Load);
             this.ResumeLayout(false);
 
         }
