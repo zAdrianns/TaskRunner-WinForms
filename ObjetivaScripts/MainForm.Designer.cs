@@ -55,6 +55,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.CopyScripts = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnResetTransportNF = new System.Windows.Forms.Button();
+            this.btnMudaModelNF = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -78,8 +80,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPreDocAltEstacao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnMudaModelNF = new System.Windows.Forms.Button();
-            this.btnResetTransportNF = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
@@ -422,6 +422,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // btnResetTransportNF
+            // 
+            this.btnResetTransportNF.Location = new System.Drawing.Point(4, 59);
+            this.btnResetTransportNF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetTransportNF.Name = "btnResetTransportNF";
+            this.btnResetTransportNF.Size = new System.Drawing.Size(175, 28);
+            this.btnResetTransportNF.TabIndex = 26;
+            this.btnResetTransportNF.Text = "Resetar Transporte da Nota Fiscal";
+            this.btnResetTransportNF.UseVisualStyleBackColor = true;
+            this.btnResetTransportNF.Click += new System.EventHandler(this.btnResetTransportNF_Click);
+            // 
+            // btnMudaModelNF
+            // 
+            this.btnMudaModelNF.Location = new System.Drawing.Point(4, 257);
+            this.btnMudaModelNF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMudaModelNF.Name = "btnMudaModelNF";
+            this.btnMudaModelNF.Size = new System.Drawing.Size(175, 28);
+            this.btnMudaModelNF.TabIndex = 25;
+            this.btnMudaModelNF.Text = "Muda Modelo da Nota";
+            this.btnMudaModelNF.UseVisualStyleBackColor = true;
+            this.btnMudaModelNF.Click += new System.EventHandler(this.btnMudaModelNF_Click);
+            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(362, 289);
@@ -663,28 +685,6 @@
             this.label1.Size = new System.Drawing.Size(163, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Scripts para Copiar";
-            // 
-            // btnMudaModelNF
-            // 
-            this.btnMudaModelNF.Location = new System.Drawing.Point(4, 257);
-            this.btnMudaModelNF.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMudaModelNF.Name = "btnMudaModelNF";
-            this.btnMudaModelNF.Size = new System.Drawing.Size(175, 28);
-            this.btnMudaModelNF.TabIndex = 25;
-            this.btnMudaModelNF.Text = "Muda Modelo da Nota";
-            this.btnMudaModelNF.UseVisualStyleBackColor = true;
-            this.btnMudaModelNF.Click += new System.EventHandler(this.btnMudaModelNF_Click);
-            // 
-            // btnResetTransportNF
-            // 
-            this.btnResetTransportNF.Location = new System.Drawing.Point(4, 59);
-            this.btnResetTransportNF.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResetTransportNF.Name = "btnResetTransportNF";
-            this.btnResetTransportNF.Size = new System.Drawing.Size(175, 28);
-            this.btnResetTransportNF.TabIndex = 26;
-            this.btnResetTransportNF.Text = "Resetar Transporte da Nota Fiscal";
-            this.btnResetTransportNF.UseVisualStyleBackColor = true;
-            this.btnResetTransportNF.Click += new System.EventHandler(this.btnResetTransportNF_Click);
             // 
             // MainForm
             // 

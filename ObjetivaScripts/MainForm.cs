@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TaskRunner;
 
 namespace ObjetivaScripts
 {
@@ -20,6 +21,7 @@ namespace ObjetivaScripts
     {
         public static string Senha = "SA_0bjetiva";
         LiberacaoScript acesso = new LiberacaoScript();
+        ScriptsParaCopiar scrptCopy = new ScriptsParaCopiar();
         public MainForm()
         {
             InitializeComponent();
@@ -351,95 +353,80 @@ namespace ObjetivaScripts
         //TAB 3 - Testes
         private void btnResetTransportNF_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.ResetarTransporteNF);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.ResetarTransporteNF);
+            scrptCopy.ShowDialog();
         }
 
         private void btnDupChaveAcesso_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.DuplicidadeChaveACesso);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.DuplicidadeChaveACesso);
+            scrptCopy.ShowDialog();
         }
 
         private void btnCNPJautDownlo_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.CnpjAutorizadoDownload);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.CnpjAutorizadoDownload);
+            scrptCopy.ShowDialog();
         }
 
         private void btnDescontoRateado_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.DescontoRateado);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.DescontoRateado);
+            scrptCopy.ShowDialog();
         }
 
         private void btnDesvPreDoc_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.DesvinculaPreDoc);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.DesvinculaPreDoc);
+            scrptCopy.ShowDialog();
         }
 
         private void btnMudaOpNF_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.MudaOperacaoNF);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.MudaOperacaoNF);
+            scrptCopy.ShowDialog();
         }
 
         private void btnMudaModelNF_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.MudaModeloNF);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.MudaModeloNF);
+            scrptCopy.ShowDialog();
         }
 
         private void btnNfPendenteEmitd_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.NfPendenteTransmitida);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.NfPendenteTransmitida);
+            scrptCopy.ShowDialog();
         }
 
         private void btnPreDocAltEstacao_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.PreDocAlteradoEmOutraEstacao);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.PreDocAlteradoEmOutraEstacao);
+            scrptCopy.ShowDialog();
         }
 
         private void btnAltStatPreDoc_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.AlterarStatusPreDoc);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.AlterarStatusPreDoc);
+            scrptCopy.ShowDialog();
         }
 
         private void btnRefaturaCErro_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.ExcluirRefaturaErro);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.ExcluirRefaturaErro);
+            scrptCopy.ShowDialog();
         }
 
         private void btnRefInvisivel_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.RemoverRefInvisivel);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.RemoverRefInvisivel);
+            scrptCopy.ShowDialog();
         }
 
         private void btnInutilizarNFAut_Click(object sender, EventArgs e)
         {
-            Form ScriptforCopy = new Form();
-            Tab3FormCreator.TextoScript(ScriptforCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
-            ScriptforCopy.ShowDialog();
+            Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
+            scrptCopy.ShowDialog();
         }
-
-        
     }
 }

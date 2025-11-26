@@ -147,16 +147,16 @@ DELETE DOCUMENTOFISCALREFERENCIADO WHERE ID = ''
 ";
 
         public static string InutilizouSemVerSitSefaz = @"
-select * from documentofiscal where codigo='1224'
-select * from documentofiscal where id='bd51ae60-ef1d-4454-9926-d3f448b09b29'
-delete documentofiscalinutilizacao where id='bd51ae60-ef1d-4454-9926-d3f448b09b29'
+select * from documentofiscal where codigo=''
+select * from documentofiscal where id=''
+delete documentofiscalinutilizacao where id=''
 
 
 
-update documentofiscal set ativo='1' where id='bd51ae60-ef1d-4454-9926-d3f448b09b29'
+update documentofiscal set ativo='1' where id=''
 
 
-delete documentofiscalautorizacao where id='bd51ae60-ef1d-4454-9926-d3f448b09b29'
+delete documentofiscalautorizacao where id=''
 ";
     }
 }

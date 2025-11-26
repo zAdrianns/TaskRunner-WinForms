@@ -12,11 +12,6 @@ namespace ObjetivaScripts.Utilities
     {
         public static Form TextoScript(Form tela, string texto)
         {
-            tela.Text = "Script";
-            tela.Size = new Size(1000, 800);
-            tela.FormBorderStyle = FormBorderStyle.FixedSingle;
-            tela.StartPosition = FormStartPosition.CenterScreen;
-
             RichTextBox txt = new RichTextBox()
             {
                 Font = new Font("Consolas", 11),
