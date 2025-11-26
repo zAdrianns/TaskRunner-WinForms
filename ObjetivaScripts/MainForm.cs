@@ -1,5 +1,4 @@
-﻿using ObjetivaScripts.Bat_Files;
-using ObjetivaScripts.Copy_SQL_Scripts;
+﻿using ObjetivaScripts.Copy_SQL_Scripts;
 using ObjetivaScripts.SQL;
 using ObjetivaScripts.Utilities;
 using System;
