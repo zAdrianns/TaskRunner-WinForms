@@ -144,10 +144,7 @@ select * from documentofiscal where codigo=''
 select * from documentofiscal where id=''
 delete documentofiscalinutilizacao where id=''
 
-
-
 update documentofiscal set ativo='1' where id=''
-
 
 delete documentofiscalautorizacao where id=''
 ";

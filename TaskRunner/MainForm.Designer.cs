@@ -48,6 +48,10 @@
             this.btnUpdCustosFilial50 = new System.Windows.Forms.Button();
             this.LabTitlePg1 = new System.Windows.Forms.Label();
             this.pg2SqlRoutineScripts = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnRecriarEstatBanco = new System.Windows.Forms.Button();
+            this.btnRecriaIndice = new System.Windows.Forms.Button();
+            this.btnLimparLog = new System.Windows.Forms.Button();
             this.btnAttIbsCbsNCM = new System.Windows.Forms.Button();
             this.btnUpdateCadSys = new System.Windows.Forms.Button();
             this.pg2TxtSelecionarServidor = new System.Windows.Forms.Label();
@@ -80,10 +84,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPreDocAltEstacao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLimparLog = new System.Windows.Forms.Button();
-            this.btnRecriaIndice = new System.Windows.Forms.Button();
-            this.btnRecriarEstatBanco = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
@@ -325,6 +325,49 @@
             this.pg2SqlRoutineScripts.TabIndex = 1;
             this.pg2SqlRoutineScripts.Text = "SQL Routine Scripts";
             this.pg2SqlRoutineScripts.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(450, 343);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "(Banco Empresario)";
+            // 
+            // btnRecriarEstatBanco
+            // 
+            this.btnRecriarEstatBanco.Location = new System.Drawing.Point(40, 163);
+            this.btnRecriarEstatBanco.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRecriarEstatBanco.Name = "btnRecriarEstatBanco";
+            this.btnRecriarEstatBanco.Size = new System.Drawing.Size(225, 28);
+            this.btnRecriarEstatBanco.TabIndex = 9;
+            this.btnRecriarEstatBanco.Text = "Recria Estatisticas Banco";
+            this.btnRecriarEstatBanco.UseVisualStyleBackColor = true;
+            this.btnRecriarEstatBanco.Click += new System.EventHandler(this.btnRecriarEstatBanco_Click);
+            // 
+            // btnRecriaIndice
+            // 
+            this.btnRecriaIndice.Location = new System.Drawing.Point(280, 119);
+            this.btnRecriaIndice.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRecriaIndice.Name = "btnRecriaIndice";
+            this.btnRecriaIndice.Size = new System.Drawing.Size(225, 28);
+            this.btnRecriaIndice.TabIndex = 8;
+            this.btnRecriaIndice.Text = "Recria Indice";
+            this.btnRecriaIndice.UseVisualStyleBackColor = true;
+            this.btnRecriaIndice.Click += new System.EventHandler(this.btnRecriaIndice_Click_1);
+            // 
+            // btnLimparLog
+            // 
+            this.btnLimparLog.Location = new System.Drawing.Point(40, 119);
+            this.btnLimparLog.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimparLog.Name = "btnLimparLog";
+            this.btnLimparLog.Size = new System.Drawing.Size(225, 28);
+            this.btnLimparLog.TabIndex = 7;
+            this.btnLimparLog.Text = "Limpar Log";
+            this.btnLimparLog.UseVisualStyleBackColor = true;
+            this.btnLimparLog.Click += new System.EventHandler(this.btnLimparLog_Click);
             // 
             // btnAttIbsCbsNCM
             // 
@@ -694,49 +737,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Scripts para Copiar";
             // 
-            // btnLimparLog
-            // 
-            this.btnLimparLog.Location = new System.Drawing.Point(40, 119);
-            this.btnLimparLog.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLimparLog.Name = "btnLimparLog";
-            this.btnLimparLog.Size = new System.Drawing.Size(225, 28);
-            this.btnLimparLog.TabIndex = 7;
-            this.btnLimparLog.Text = "Limpar Log";
-            this.btnLimparLog.UseVisualStyleBackColor = true;
-            this.btnLimparLog.Click += new System.EventHandler(this.btnLimparLog_Click);
-            // 
-            // btnRecriaIndice
-            // 
-            this.btnRecriaIndice.Location = new System.Drawing.Point(280, 119);
-            this.btnRecriaIndice.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRecriaIndice.Name = "btnRecriaIndice";
-            this.btnRecriaIndice.Size = new System.Drawing.Size(225, 28);
-            this.btnRecriaIndice.TabIndex = 8;
-            this.btnRecriaIndice.Text = "Recria Indice";
-            this.btnRecriaIndice.UseVisualStyleBackColor = true;
-            this.btnRecriaIndice.Click += new System.EventHandler(this.btnRecriaIndice_Click_1);
-            // 
-            // btnRecriarEstatBanco
-            // 
-            this.btnRecriarEstatBanco.Location = new System.Drawing.Point(40, 163);
-            this.btnRecriarEstatBanco.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRecriarEstatBanco.Name = "btnRecriarEstatBanco";
-            this.btnRecriarEstatBanco.Size = new System.Drawing.Size(225, 28);
-            this.btnRecriarEstatBanco.TabIndex = 9;
-            this.btnRecriarEstatBanco.Text = "Recria Estatisticas Banco";
-            this.btnRecriarEstatBanco.UseVisualStyleBackColor = true;
-            this.btnRecriarEstatBanco.Click += new System.EventHandler(this.btnRecriarEstatBanco_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(450, 343);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "(Banco Empresario)";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -746,6 +746,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskRunner";

@@ -551,7 +551,5 @@ DEALLOCATE DB_CURSOR
             Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
             scrptCopy.ShowDialog();
         }
-
-        
     }
 }
