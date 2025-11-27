@@ -87,8 +87,8 @@
     <Compile Include="ScriptsParaCopiar.Designer.cs">
       <DependentUpon>ScriptsParaCopiar.cs</DependentUpon>
     </Compile>
-    <Compile Include="SQL\Query.cs" />
-    <Compile Include="SQL\SqlConn.cs" />
+    <Compile Include="Utilities\SQL\Query.cs" />
+    <Compile Include="Utilities\SQL\SqlConn.cs" />
     <Compile Include="Utilities\TempFile.cs" />
     <Compile Include="Utilities\Tab3FormCreator.cs" />
     <EmbeddedResource Include="MainForm.resx">
