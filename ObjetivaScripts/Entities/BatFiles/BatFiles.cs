@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaskRunner.Bat_Files
+﻿namespace TaskRunner.Bat_Files
 {
     internal class BatFiles
     {

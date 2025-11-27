@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Design_sem_nome__5_-removebg-preview.ico</ApplicationIcon>
+    <ApplicationIcon>AppLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,8 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bat Files\BatFiles.cs" />
-    <Compile Include="Copy SQL Scripts\ScriptsTexts.cs" />
+    <Compile Include="Entities\BatFiles\BatFiles.cs" />
+    <Compile Include="Entities\CopySQLScripts\ScriptsTexts.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +124,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Design-sem-nome-_2_.ico" />
-    <Content Include="Design-sem-nome-_3_.ico" />
-    <Content Include="Design_sem_nome__5_-removebg-preview.ico" />
+    <Content Include="AppLogo.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -140,5 +138,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
