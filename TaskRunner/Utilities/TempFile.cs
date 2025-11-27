@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ObjetivaScripts.Utilities
+namespace TaskRunner.Utilities
 {
     internal class TempFile
     {
@@ -17,7 +17,9 @@ namespace ObjetivaScripts.Utilities
             ProcessInfo.FileName = TempFile.CreateTempFile;
             ProcessInfo.Verb = "runas";
             ProcessInfo.UseShellExecute = true;
-            Process.Start(ProcessInfo);
+            Process proc = Process.Start(ProcessInfo);
+            proc.WaitForExit();
+            File.Delete(TempFile.CreateTempFile);
         }
     }
 }

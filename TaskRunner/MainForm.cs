@@ -1,6 +1,6 @@
-﻿using ObjetivaScripts.Copy_SQL_Scripts;
-using ObjetivaScripts.SQL;
-using ObjetivaScripts.Utilities;
+﻿using TaskRunner.Copy_SQL_Scripts;
+using TaskRunner.SQL;
+using TaskRunner.Utilities;
 using System;
 using System.Data;
 using System.Data.Sql;
@@ -10,7 +10,7 @@ using TaskRunner;
 using TaskRunner.Bat_Files;
 
 
-namespace ObjetivaScripts
+namespace TaskRunner
 {
     public partial class MainForm : Form
     {

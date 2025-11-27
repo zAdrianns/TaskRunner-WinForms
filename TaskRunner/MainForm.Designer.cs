@@ -1,4 +1,4 @@
-﻿namespace ObjetivaScripts
+﻿namespace TaskRunner
 {
     partial class MainForm
     {

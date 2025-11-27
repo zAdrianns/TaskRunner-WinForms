@@ -1,4 +1,4 @@
-﻿namespace ObjetivaScripts.SQL
+﻿namespace TaskRunner.SQL
 {
     internal class SqlConn
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ObjetivaScripts
+namespace TaskRunner
 {
     public partial class LiberacaoScript : Form
     {

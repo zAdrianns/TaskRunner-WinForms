@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ObjetivaScripts.SQL
+namespace TaskRunner.SQL
 {
     internal class Query
     {

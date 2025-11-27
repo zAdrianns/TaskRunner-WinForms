@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ObjetivaScripts.Utilities
+namespace TaskRunner.Utilities
 {
     internal class Tab3FormCreator
     {

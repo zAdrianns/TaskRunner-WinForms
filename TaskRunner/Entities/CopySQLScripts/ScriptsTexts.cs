@@ -1,4 +1,4 @@
-﻿namespace ObjetivaScripts.Copy_SQL_Scripts
+﻿namespace TaskRunner.Copy_SQL_Scripts
 {
     internal class ScriptsTexts
     {
