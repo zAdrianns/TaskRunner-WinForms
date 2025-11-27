@@ -17,7 +17,6 @@
             get
             {
                 return "Data Source=" + server +
-                    "; Integrated Security = true" +
                     "; User ID=" + username +
                     "; Password=" + password +
                     "; Initial Catalog=" + database;
