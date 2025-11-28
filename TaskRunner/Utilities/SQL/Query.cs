@@ -354,5 +354,35 @@ DEALLOCATE DB_CURSOR
             }
         }
 
+        public static void RemoverRegistrosTabela()
+        {
+            using (SqlConnection con = new SqlConnection(SqlConn.ConnString))
+            {
+                try
+                {
+                    con.Open();
+
+                    string limparRegTabela =
+                        @"
+DELETE HISTORICO 
+WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = ''
+";
+
+                    SqlCommand cmd = new SqlCommand(limparRegTabela, con)
+                    {
+                        CommandTimeout = 600
+                    };
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Correções feitas com sucesso", "Sucesso", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

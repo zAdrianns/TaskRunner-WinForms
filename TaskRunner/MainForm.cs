@@ -14,7 +14,6 @@ namespace TaskRunner
 {
     public partial class MainForm : Form
     {
-        public static string Senha = "SA_0bjetiva";
         LiberacaoScript acesso = new LiberacaoScript();
         ScriptsParaCopiar scrptCopy = new ScriptsParaCopiar();
         public MainForm()
@@ -473,6 +472,34 @@ DEALLOCATE DB_CURSOR
             }
         }
 
+        private void btnRemoverRegTabelaHist_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Recria Estatisticas Banco?", "Recria Estatisticas Banco", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Query.RemoverRegistrosTabela();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
+
         //TAB 3 - Scripts Text
         private void btnResetTransportNF_Click(object sender, EventArgs e)
         {
@@ -551,5 +578,7 @@ DEALLOCATE DB_CURSOR
             Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
             scrptCopy.ShowDialog();
         }
+
+        
     }
 }

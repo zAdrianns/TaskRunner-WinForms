@@ -84,6 +84,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPreDocAltEstacao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRemoverRegTabelaHist = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
@@ -308,6 +309,7 @@
             // 
             // pg2SqlRoutineScripts
             // 
+            this.pg2SqlRoutineScripts.Controls.Add(this.btnRemoverRegTabelaHist);
             this.pg2SqlRoutineScripts.Controls.Add(this.label2);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnRecriarEstatBanco);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnRecriaIndice);
@@ -737,6 +739,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Scripts para Copiar";
             // 
+            // btnRemoverRegTabelaHist
+            // 
+            this.btnRemoverRegTabelaHist.Location = new System.Drawing.Point(280, 163);
+            this.btnRemoverRegTabelaHist.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRegTabelaHist.Name = "btnRemoverRegTabelaHist";
+            this.btnRemoverRegTabelaHist.Size = new System.Drawing.Size(225, 28);
+            this.btnRemoverRegTabelaHist.TabIndex = 11;
+            this.btnRemoverRegTabelaHist.Text = "Remover Registros Tabela Historico";
+            this.btnRemoverRegTabelaHist.UseVisualStyleBackColor = true;
+            this.btnRemoverRegTabelaHist.Click += new System.EventHandler(this.btnRemoverRegTabelaHist_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,6 +833,7 @@
         private System.Windows.Forms.Button btnRecriaIndice;
         private System.Windows.Forms.Button btnRecriarEstatBanco;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRemoverRegTabelaHist;
     }
 }
 
