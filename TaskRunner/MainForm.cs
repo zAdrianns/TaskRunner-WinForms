@@ -25,6 +25,9 @@ namespace TaskRunner
 
             //Tab2
 
+            btnEmpresario.Enabled = true;
+            btnObjNFCE.Enabled = true;
+
             toolTip1.SetToolTip(this.btnTestarConexao, "Testar conexão com banco de dados");
             toolTip1.SetToolTip(this.btnUpdateCadSys, "update cadsys set dtimplantacao = '01/01/2000'");
             toolTip1.SetToolTip(this.btnLimparLog, "DBCC SHRINKDATABASE(Empresario, 0) WITH NO_INFOMSGS");
@@ -64,6 +67,10 @@ END
 
 CLOSE DB_CURSOR 
 DEALLOCATE DB_CURSOR
+");
+            toolTip1.SetToolTip(this.btnRemoverRegTabelaHist, @"
+DELETE HISTORICO 
+WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = ''
 ");
 
             //tab3
@@ -318,14 +325,17 @@ DEALLOCATE DB_CURSOR
                 {
                     if (comboBox1.SelectedItem.ToString() == "Selecione")
                     {
-                        MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Você não selecionou o servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+                    {
+                        MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
                         con.Open();
-                        MessageBox.Show("Conexão Testada com Sucesso.\n" + comboBox1.SelectedItem.ToString(), "Testar Conexão", MessageBoxButtons.OK);
+                        MessageBox.Show("Conexão Testada com Sucesso.\n\nServidor: " + comboBox1.SelectedItem.ToString() + "\nBanco: " + SqlConn.getDataBase(), "Testar Conexão", MessageBoxButtons.OK);
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -333,11 +343,35 @@ DEALLOCATE DB_CURSOR
                 }
             }
         }
+
+        private void btnEmpresario_Click(object sender, EventArgs e)
+        {
+            string dtBase = "Empresario";
+            SqlConn.setDataBase(dtBase);
+
+            btnEmpresario.Enabled = false;
+            btnObjNFCE.Enabled = true;
+        }
+
+        private void btnObjNFCE_Click(object sender, EventArgs e)
+        {
+            string dtBase = "ObjetivaNFCe";
+            SqlConn.setDataBase(dtBase);
+
+            btnObjNFCE.Enabled = false;
+            btnEmpresario.Enabled = true;
+
+        }
+
         private void btnUpdateCadSys_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem.ToString() == "Selecione")
             {
                 MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -365,6 +399,10 @@ DEALLOCATE DB_CURSOR
             if (comboBox1.SelectedItem.ToString() == "Selecione")
             {
                 MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -394,6 +432,10 @@ DEALLOCATE DB_CURSOR
             {
                 MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             else
             {
                 acesso.ShowDialog();
@@ -421,6 +463,10 @@ DEALLOCATE DB_CURSOR
             if (comboBox1.SelectedItem.ToString() == "Selecione")
             {
                 MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -450,6 +496,10 @@ DEALLOCATE DB_CURSOR
             {
                 MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             else
             {
                 acesso.ShowDialog();
@@ -477,6 +527,10 @@ DEALLOCATE DB_CURSOR
             if (comboBox1.SelectedItem.ToString() == "Selecione")
             {
                 MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
