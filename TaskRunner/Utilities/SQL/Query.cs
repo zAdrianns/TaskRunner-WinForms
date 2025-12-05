@@ -384,5 +384,47 @@ WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = 
             }
         }
 
+        public static void AlterarGrupoIBSCBSID7()
+        {
+            using (SqlConnection con = new SqlConnection(SqlConn.ConnString))
+            {
+                try
+                {
+                    con.Open();
+
+                    string AlterarGrupoIbsCbsId7 =
+                        @"
+UPDATE IBSCBS
+SET
+    CSTIBSCBSID = '200',
+    CCLASSTRIBIBSCBSID = '200038',
+    PERCENTUALREDUCAOIBSUF = '60.0000',
+    PERCENTUALALIQUOTAEFETIVAIBSUF = '0.0400',
+    PERCENTUALREDUCAOIBSMUNICIPIO = '60.0000',
+    PERCENTUALREDUCAOCBS = '60.0000',
+    PERCENTUALALIQUOTACBS = '0.9000',
+    PERCENTUALALIQUOTAEFETIVACBS = '0.3600',
+    TIPOREDUCAOCBS = '0',
+    TIPOREDUCAOIBS = '0'
+WHERE
+    IBSCBSGRUPOID = '7';
+";
+
+                    SqlCommand cmd = new SqlCommand(AlterarGrupoIbsCbsId7, con)
+                    {
+                        CommandTimeout = 600
+                    };
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Correções feitas com sucesso", "Sucesso", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

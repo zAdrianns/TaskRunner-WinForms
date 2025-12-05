@@ -48,8 +48,9 @@
             this.btnUpdCustosFilial50 = new System.Windows.Forms.Button();
             this.LabTitlePg1 = new System.Windows.Forms.Label();
             this.pg2SqlRoutineScripts = new System.Windows.Forms.TabPage();
+            this.btnObjNFCE = new System.Windows.Forms.Button();
+            this.btnEmpresario = new System.Windows.Forms.Button();
             this.btnRemoverRegTabelaHist = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnRecriarEstatBanco = new System.Windows.Forms.Button();
             this.btnRecriaIndice = new System.Windows.Forms.Button();
             this.btnLimparLog = new System.Windows.Forms.Button();
@@ -85,8 +86,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPreDocAltEstacao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnEmpresario = new System.Windows.Forms.Button();
-            this.btnObjNFCE = new System.Windows.Forms.Button();
+            this.btnAltGrupIbsCbsID7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
@@ -311,10 +311,10 @@
             // 
             // pg2SqlRoutineScripts
             // 
+            this.pg2SqlRoutineScripts.Controls.Add(this.btnAltGrupIbsCbsID7);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnObjNFCE);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnEmpresario);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnRemoverRegTabelaHist);
-            this.pg2SqlRoutineScripts.Controls.Add(this.label2);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnRecriarEstatBanco);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnRecriaIndice);
             this.pg2SqlRoutineScripts.Controls.Add(this.btnLimparLog);
@@ -332,9 +332,29 @@
             this.pg2SqlRoutineScripts.Text = "SQL Routine Scripts";
             this.pg2SqlRoutineScripts.UseVisualStyleBackColor = true;
             // 
+            // btnObjNFCE
+            // 
+            this.btnObjNFCE.Location = new System.Drawing.Point(430, 40);
+            this.btnObjNFCE.Name = "btnObjNFCE";
+            this.btnObjNFCE.Size = new System.Drawing.Size(75, 23);
+            this.btnObjNFCE.TabIndex = 13;
+            this.btnObjNFCE.Text = "ObjetivaNFCE";
+            this.btnObjNFCE.UseVisualStyleBackColor = true;
+            this.btnObjNFCE.Click += new System.EventHandler(this.btnObjNFCE_Click);
+            // 
+            // btnEmpresario
+            // 
+            this.btnEmpresario.Location = new System.Drawing.Point(349, 40);
+            this.btnEmpresario.Name = "btnEmpresario";
+            this.btnEmpresario.Size = new System.Drawing.Size(75, 23);
+            this.btnEmpresario.TabIndex = 12;
+            this.btnEmpresario.Text = "Empresario";
+            this.btnEmpresario.UseVisualStyleBackColor = true;
+            this.btnEmpresario.Click += new System.EventHandler(this.btnEmpresario_Click);
+            // 
             // btnRemoverRegTabelaHist
             // 
-            this.btnRemoverRegTabelaHist.Location = new System.Drawing.Point(280, 205);
+            this.btnRemoverRegTabelaHist.Location = new System.Drawing.Point(280, 161);
             this.btnRemoverRegTabelaHist.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverRegTabelaHist.Name = "btnRemoverRegTabelaHist";
             this.btnRemoverRegTabelaHist.Size = new System.Drawing.Size(225, 28);
@@ -342,16 +362,6 @@
             this.btnRemoverRegTabelaHist.Text = "Remover Registros Tabela Historico";
             this.btnRemoverRegTabelaHist.UseVisualStyleBackColor = true;
             this.btnRemoverRegTabelaHist.Click += new System.EventHandler(this.btnRemoverRegTabelaHist_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(450, 343);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "(Banco Empresario)";
             // 
             // btnRecriarEstatBanco
             // 
@@ -366,7 +376,7 @@
             // 
             // btnRecriaIndice
             // 
-            this.btnRecriaIndice.Location = new System.Drawing.Point(280, 161);
+            this.btnRecriaIndice.Location = new System.Drawing.Point(280, 115);
             this.btnRecriaIndice.Margin = new System.Windows.Forms.Padding(2);
             this.btnRecriaIndice.Name = "btnRecriaIndice";
             this.btnRecriaIndice.Size = new System.Drawing.Size(225, 28);
@@ -388,7 +398,7 @@
             // 
             // btnAttIbsCbsNCM
             // 
-            this.btnAttIbsCbsNCM.Location = new System.Drawing.Point(280, 115);
+            this.btnAttIbsCbsNCM.Location = new System.Drawing.Point(280, 205);
             this.btnAttIbsCbsNCM.Margin = new System.Windows.Forms.Padding(2);
             this.btnAttIbsCbsNCM.Name = "btnAttIbsCbsNCM";
             this.btnAttIbsCbsNCM.Size = new System.Drawing.Size(225, 28);
@@ -754,25 +764,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Scripts para Copiar";
             // 
-            // btnEmpresario
+            // btnAltGrupIbsCbsID7
             // 
-            this.btnEmpresario.Location = new System.Drawing.Point(349, 40);
-            this.btnEmpresario.Name = "btnEmpresario";
-            this.btnEmpresario.Size = new System.Drawing.Size(75, 23);
-            this.btnEmpresario.TabIndex = 12;
-            this.btnEmpresario.Text = "Empresario";
-            this.btnEmpresario.UseVisualStyleBackColor = true;
-            this.btnEmpresario.Click += new System.EventHandler(this.btnEmpresario_Click);
-            // 
-            // btnObjNFCE
-            // 
-            this.btnObjNFCE.Location = new System.Drawing.Point(430, 40);
-            this.btnObjNFCE.Name = "btnObjNFCE";
-            this.btnObjNFCE.Size = new System.Drawing.Size(75, 23);
-            this.btnObjNFCE.TabIndex = 13;
-            this.btnObjNFCE.Text = "ObjetivaNFCE";
-            this.btnObjNFCE.UseVisualStyleBackColor = true;
-            this.btnObjNFCE.Click += new System.EventHandler(this.btnObjNFCE_Click);
+            this.btnAltGrupIbsCbsID7.Location = new System.Drawing.Point(162, 247);
+            this.btnAltGrupIbsCbsID7.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAltGrupIbsCbsID7.Name = "btnAltGrupIbsCbsID7";
+            this.btnAltGrupIbsCbsID7.Size = new System.Drawing.Size(225, 28);
+            this.btnAltGrupIbsCbsID7.TabIndex = 14;
+            this.btnAltGrupIbsCbsID7.Text = "Alterar Grupo IBSCBSGRUPOID = \'7\'";
+            this.btnAltGrupIbsCbsID7.UseVisualStyleBackColor = true;
+            this.btnAltGrupIbsCbsID7.Click += new System.EventHandler(this.btnAltGrupIbsCbsID7_Click);
             // 
             // MainForm
             // 
@@ -856,10 +857,10 @@
         private System.Windows.Forms.Button btnLimparLog;
         private System.Windows.Forms.Button btnRecriaIndice;
         private System.Windows.Forms.Button btnRecriarEstatBanco;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRemoverRegTabelaHist;
         private System.Windows.Forms.Button btnObjNFCE;
         private System.Windows.Forms.Button btnEmpresario;
+        private System.Windows.Forms.Button btnAltGrupIbsCbsID7;
     }
 }
 

@@ -554,6 +554,38 @@ WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = 
             }
         }
 
+        private void btnAltGrupIbsCbsID7_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Alterar Grupo IBSCBSGRUPOID = '7'?", "Alterar Grupo IBSCBSGRUPOID = '7'", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Query.AlterarGrupoIBSCBSID7();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
+
         //TAB 3 - Scripts Text
         private void btnResetTransportNF_Click(object sender, EventArgs e)
         {
