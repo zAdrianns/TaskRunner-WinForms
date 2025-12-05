@@ -72,6 +72,23 @@ DEALLOCATE DB_CURSOR
 DELETE HISTORICO 
 WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = ''
 ");
+            toolTip1.SetToolTip(this.btnAltGrupIbsCbsID7, @"
+UPDATE IBSCBS
+SET
+    CSTIBSCBSID = '200',
+    CCLASSTRIBIBSCBSID = '200038',
+    PERCENTUALREDUCAOIBSUF = '60.0000',
+    PERCENTUALALIQUOTAEFETIVAIBSUF = '0.0400',
+    PERCENTUALREDUCAOIBSMUNICIPIO = '60.0000',
+    PERCENTUALREDUCAOCBS = '60.0000',
+    PERCENTUALALIQUOTACBS = '0.9000',
+    PERCENTUALALIQUOTAEFETIVACBS = '0.3600',
+    TIPOREDUCAOCBS = '0',
+    TIPOREDUCAOIBS = '0'
+WHERE
+    IBSCBSGRUPOID = '7';
+");
+
 
             //tab3
             toolTip1.SetToolTip(this.btnResetTransportNF, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
@@ -79,215 +96,104 @@ WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = 
         }
 
         //TAB 1 - Scripts Objetiva
+
+        private void ExecutarBatFile(string texto, Action comando)
+        {
+            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {texto}?", texto, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            try
+            {
+                if (msg == DialogResult.Yes)
+                {
+                    comando.Invoke();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnUpdCustosFilial50_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnUpdCustosFilial50.Text}?", btnUpdCustosFilial50.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
-            {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirFilial50);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            ExecutarBatFile(btnUpdCustosFilial50.Text, () => TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirFilial50));
         }
+
         private void btnUpdCustosEntrada_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnUpdCustosEntrada.Text}?", btnUpdCustosEntrada.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirEntrada);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnUpdCustosEntrada.Text, () => TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirEntrada));
             }
         }
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnBackup.Text}?", btnBackup.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.RealizarBackup);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnBackup.Text, () => TempFile.ExecuteTempFile(BatFiles.RealizarBackup));
             }
         }
         private void btnEndVarejo_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnEndVarejo.Text}?", btnEndVarejo.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.FinalizarTarefasObjVarejo);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnEndVarejo.Text, () => TempFile.ExecuteTempFile(BatFiles.FinalizarTarefasObjVarejo));
             }
         }
         private void btnEndUniDanfe_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnEndUniDanfe.Text}?", btnEndUniDanfe.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.EncerrarUniDanfe);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnEndUniDanfe.Text, () => TempFile.ExecuteTempFile(BatFiles.EncerrarUniDanfe));
             }
         }
         private void btnDellDLLECF_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnDellDLLECF.Text}?", btnDellDLLECF.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.DeleteDllECF);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnDellDLLECF.Text, () => TempFile.ExecuteTempFile(BatFiles.DeleteDllECF));
             }
         }
         private void btnClearFilaImpressao_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnClearFilaImpressao.Text}?", btnClearFilaImpressao.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.LimparFilaImpressao);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnClearFilaImpressao.Text, () => TempFile.ExecuteTempFile(BatFiles.LimparFilaImpressao));
             }
         }
         private void btnPermObjC_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnPermObjC.Text}?", btnPermObjC.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.PermissaoObjC);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnPermObjC.Text, () => TempFile.ExecuteTempFile(BatFiles.PermissaoObjC));
             }
         }
         private void btnPermObjD_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnPermObjD.Text}?", btnPermObjD.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.PermissaoObjD);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnPermObjD.Text, () => TempFile.ExecuteTempFile(BatFiles.PermissaoObjD));
             }
         }
         private void btnStartSQLService_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnStartSQLService.Text}?", btnStartSQLService.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.iniciarSqlService);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnStartSQLService.Text, () => TempFile.ExecuteTempFile(BatFiles.iniciarSqlService));
             }
         }
         private void btnLibSqlFirewall_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnLibSqlFirewall.Text}?", btnLibSqlFirewall.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.LiberarSQLFirewall);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnLibSqlFirewall.Text, () => TempFile.ExecuteTempFile(BatFiles.LiberarSQLFirewall));
             }
         }
         private void btnRecEstatistBD_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnRecEstatistBD.Text}?", btnRecEstatistBD.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.RecriaEstatisticaBD);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnRecEstatistBD.Text, () => TempFile.ExecuteTempFile(BatFiles.RecriaEstatisticaBD));
             }
         }
         private void btnIndexBD_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnIndexBD.Text}?", btnIndexBD.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.IndexarBanco);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnIndexBD.Text, () => TempFile.ExecuteTempFile(BatFiles.IndexarBanco));
             }
         }
         private void btnDellRegistroObjetiva_Click(object sender, EventArgs e)
         {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {btnDellRegistroObjetiva.Text}?", btnDellRegistroObjetiva.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
             {
-                if (msg == DialogResult.Yes)
-                {
-                    TempFile.ExecuteTempFile(BatFiles.ExcluirRegistroObjetiva);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecutarBatFile(btnDellRegistroObjetiva.Text, () => TempFile.ExecuteTempFile(BatFiles.ExcluirRegistroObjetiva));
             }
         }
 
@@ -317,6 +223,45 @@ WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = 
                 comboBox1.SelectedIndex = 0;
             }
         }
+        private bool ValidarServerBanco()
+        {
+            if (comboBox1.SelectedItem.ToString() == "Selecione")
+            {
+                MessageBox.Show("Você não selecionou o servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            if (string.IsNullOrEmpty(SqlConn.getDataBase()))
+            {
+                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            return true;
+        }
+
+        private void ExecutarScript(string titulo, Action comando)
+        {
+            if (ValidarServerBanco())
+            {
+                acesso.ShowDialog();
+                if (acesso.DialogResult == DialogResult.OK)
+                {
+                    DialogResult result = MessageBox.Show($"Tem certeza que deseja executar o comando {titulo}?", titulo, MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            comando.Invoke();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
+                        }
+                    }
+                }
+            }
+        }
+
         private void btnTestarConexao_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(SqlConn.ConnString))
@@ -365,225 +310,36 @@ WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = 
 
         private void btnUpdateCadSys_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando UpdateCadSys?", "Update CadSys", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.UpdateCadSys();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("UpdateCadSys", Query.UpdateCadSys);
         }
         private void btnAttIbsCbsNCM_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando ATUALIZA IBSCBS COM BASE NO NCM?", "ATUALIZA IBSCBS COM BASE NO NCM", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.AtualizaIbsCbsNCM();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("ATUALIZA IBSCBS COM BASE NO NCM", Query.AtualizaIbsCbsNCM);
         }
 
         private void btnLimparLog_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Limpar Log?", "Limpar Log", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.LimparLog();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("Limpar Log", Query.LimparLog);
         }
 
         private void btnRecriaIndice_Click_1(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Recria Indice?", "Recria Indice", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.RecriaIndice();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("Recria Indice", Query.RecriaIndice);
         }
 
         private void btnRecriarEstatBanco_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Recria Estatisticas Banco?", "Recria Estatisticas Banco", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.RecriaEstatisticasBanco();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("Recriar Estatisticas Banco", Query.RecriaEstatisticasBanco);
         }
 
         private void btnRemoverRegTabelaHist_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Recria Estatisticas Banco?", "Recria Estatisticas Banco", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.RemoverRegistrosTabela();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("Remover Registros Tabela", Query.RemoverRegistrosTabela);
         }
 
         private void btnAltGrupIbsCbsID7_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "Selecione")
-            {
-                MessageBox.Show("Você não selecionou um servidor...", "Selecione um Servidor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (string.IsNullOrEmpty(SqlConn.getDataBase()))
-            {
-                MessageBox.Show("Você não selecionou um banco de dados...", "Selecione um Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show("Tem certeza que deseja executar o comando Alterar Grupo IBSCBSGRUPOID = '7'?", "Alterar Grupo IBSCBSGRUPOID = '7'", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            Query.AlterarGrupoIBSCBSID7();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
+            ExecutarScript("Alterar Grupo IBSCBSGRUPOID = '7'", Query.AlterarGrupoIBSCBSID7);
         }
 
         //TAB 3 - Scripts Text
@@ -664,7 +420,5 @@ WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = 
             Tab3FormCreator.TextoScript(scrptCopy, ScriptsTexts.InutilizouSemVerSitSefaz);
             scrptCopy.ShowDialog();
         }
-
-        
     }
 }

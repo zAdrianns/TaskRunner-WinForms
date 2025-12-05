@@ -354,7 +354,7 @@
             // 
             // btnRemoverRegTabelaHist
             // 
-            this.btnRemoverRegTabelaHist.Location = new System.Drawing.Point(280, 161);
+            this.btnRemoverRegTabelaHist.Location = new System.Drawing.Point(280, 156);
             this.btnRemoverRegTabelaHist.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverRegTabelaHist.Name = "btnRemoverRegTabelaHist";
             this.btnRemoverRegTabelaHist.Size = new System.Drawing.Size(225, 28);
@@ -365,7 +365,7 @@
             // 
             // btnRecriarEstatBanco
             // 
-            this.btnRecriarEstatBanco.Location = new System.Drawing.Point(40, 205);
+            this.btnRecriarEstatBanco.Location = new System.Drawing.Point(40, 200);
             this.btnRecriarEstatBanco.Margin = new System.Windows.Forms.Padding(2);
             this.btnRecriarEstatBanco.Name = "btnRecriarEstatBanco";
             this.btnRecriarEstatBanco.Size = new System.Drawing.Size(225, 28);
@@ -387,7 +387,7 @@
             // 
             // btnLimparLog
             // 
-            this.btnLimparLog.Location = new System.Drawing.Point(40, 161);
+            this.btnLimparLog.Location = new System.Drawing.Point(40, 156);
             this.btnLimparLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimparLog.Name = "btnLimparLog";
             this.btnLimparLog.Size = new System.Drawing.Size(225, 28);
@@ -398,7 +398,7 @@
             // 
             // btnAttIbsCbsNCM
             // 
-            this.btnAttIbsCbsNCM.Location = new System.Drawing.Point(280, 205);
+            this.btnAttIbsCbsNCM.Location = new System.Drawing.Point(280, 200);
             this.btnAttIbsCbsNCM.Margin = new System.Windows.Forms.Padding(2);
             this.btnAttIbsCbsNCM.Name = "btnAttIbsCbsNCM";
             this.btnAttIbsCbsNCM.Size = new System.Drawing.Size(225, 28);
@@ -766,7 +766,7 @@
             // 
             // btnAltGrupIbsCbsID7
             // 
-            this.btnAltGrupIbsCbsID7.Location = new System.Drawing.Point(162, 247);
+            this.btnAltGrupIbsCbsID7.Location = new System.Drawing.Point(40, 244);
             this.btnAltGrupIbsCbsID7.Margin = new System.Windows.Forms.Padding(2);
             this.btnAltGrupIbsCbsID7.Name = "btnAltGrupIbsCbsID7";
             this.btnAltGrupIbsCbsID7.Size = new System.Drawing.Size(225, 28);
