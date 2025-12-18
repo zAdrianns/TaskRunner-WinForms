@@ -14,6 +14,7 @@ namespace TaskRunner
 {
     public partial class MainForm : Form
     {
+        private bool fecharDeVerdade = false;
         LiberacaoScript acesso = new LiberacaoScript();
         ScriptsParaCopiar scrptCopy = new ScriptsParaCopiar();
         public MainForm()
@@ -93,6 +94,24 @@ WHERE
             //tab3
             toolTip1.SetToolTip(this.btnResetTransportNF, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
             toolTip1.SetToolTip(this.btnDupChaveAcesso, "Muda chave de acesso quando ocorre o erro de duplicidade de chave de acesso.");
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+            this.ShowInTaskbar = false;
         }
 
         //TAB 1 - Scripts Objetiva
@@ -413,6 +432,12 @@ WHERE
         private void btnInutilizarNFAut_Click(object sender, EventArgs e)
         {
             AbrirScript(ScriptsTexts.InutilizouSemVerSitSefaz);
+        }
+
+        private void sairToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = false;
+            Application.Exit();
         }
     }
 }
