@@ -15,6 +15,7 @@ namespace TaskRunner
 {
     public partial class MainForm : Form
     {
+        private bool fecharDeVerdade = false;
         LiberacaoScript acesso = new LiberacaoScript();
         ScriptsParaCopiar scrptCopy = new ScriptsParaCopiar();
         ExecutarSql executarSql = new ExecutarSql();
@@ -38,6 +39,24 @@ namespace TaskRunner
             //tab3
             buttonTexts.SetToolTip(this.btnResetTransportNF, MainFormButtonTexts.btnResetTransportNFText);
             buttonTexts.SetToolTip(this.btnDupChaveAcesso, MainFormButtonTexts.btnDupChaveAcessoText);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+            this.ShowInTaskbar = false;
         }
 
         //TAB 1 - Scripts Objetiva
@@ -290,6 +309,12 @@ namespace TaskRunner
         private void btnInutilizarNFAut_Click(object sender, EventArgs e)
         {
             AbrirScript(ScriptsTexts.InutilizouSemVerSitSefaz);
+        }
+
+        private void sairToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = false;
+            Application.Exit();
         }
     }
 }

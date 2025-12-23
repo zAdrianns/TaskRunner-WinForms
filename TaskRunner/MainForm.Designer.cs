@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Pg1BatFiles = new System.Windows.Forms.TabPage();
@@ -48,6 +49,7 @@
             this.btnUpdCustosFilial50 = new System.Windows.Forms.Button();
             this.LabTitlePg1 = new System.Windows.Forms.Label();
             this.pg2SqlRoutineScripts = new System.Windows.Forms.TabPage();
+            this.btnAltGrupIbsCbsID7 = new System.Windows.Forms.Button();
             this.btnObjNFCE = new System.Windows.Forms.Button();
             this.btnEmpresario = new System.Windows.Forms.Button();
             this.btnRemoverRegTabelaHist = new System.Windows.Forms.Button();
@@ -86,13 +88,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPreDocAltEstacao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAltGrupIbsCbsID7 = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.Pg1BatFiles.SuspendLayout();
             this.GroupBoxPg1.SuspendLayout();
             this.pg2SqlRoutineScripts.SuspendLayout();
             this.CopyScripts.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -331,6 +336,17 @@
             this.pg2SqlRoutineScripts.TabIndex = 1;
             this.pg2SqlRoutineScripts.Text = "SQL Routine Scripts";
             this.pg2SqlRoutineScripts.UseVisualStyleBackColor = true;
+            // 
+            // btnAltGrupIbsCbsID7
+            // 
+            this.btnAltGrupIbsCbsID7.Location = new System.Drawing.Point(40, 244);
+            this.btnAltGrupIbsCbsID7.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAltGrupIbsCbsID7.Name = "btnAltGrupIbsCbsID7";
+            this.btnAltGrupIbsCbsID7.Size = new System.Drawing.Size(225, 28);
+            this.btnAltGrupIbsCbsID7.TabIndex = 14;
+            this.btnAltGrupIbsCbsID7.Text = "Alterar Grupo IBSCBSGRUPOID = \'7\'";
+            this.btnAltGrupIbsCbsID7.UseVisualStyleBackColor = true;
+            this.btnAltGrupIbsCbsID7.Click += new System.EventHandler(this.btnAltGrupIbsCbsID7_Click);
             // 
             // btnObjNFCE
             // 
@@ -764,16 +780,27 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Scripts para Copiar";
             // 
-            // btnAltGrupIbsCbsID7
+            // notifyIcon1
             // 
-            this.btnAltGrupIbsCbsID7.Location = new System.Drawing.Point(40, 244);
-            this.btnAltGrupIbsCbsID7.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAltGrupIbsCbsID7.Name = "btnAltGrupIbsCbsID7";
-            this.btnAltGrupIbsCbsID7.Size = new System.Drawing.Size(225, 28);
-            this.btnAltGrupIbsCbsID7.TabIndex = 14;
-            this.btnAltGrupIbsCbsID7.Text = "Alterar Grupo IBSCBSGRUPOID = \'7\'";
-            this.btnAltGrupIbsCbsID7.UseVisualStyleBackColor = true;
-            this.btnAltGrupIbsCbsID7.Click += new System.EventHandler(this.btnAltGrupIbsCbsID7_Click);
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "TaskRunner";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sairToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(94, 26);
+            // 
+            // sairToolStripMenuItem1
+            // 
+            this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
+            this.sairToolStripMenuItem1.Text = "Sair";
+            this.sairToolStripMenuItem1.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -788,6 +815,8 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskRunner";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.Pg1BatFiles.ResumeLayout(false);
             this.GroupBoxPg1.ResumeLayout(false);
@@ -797,6 +826,7 @@
             this.CopyScripts.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -861,6 +891,9 @@
         private System.Windows.Forms.Button btnObjNFCE;
         private System.Windows.Forms.Button btnEmpresario;
         private System.Windows.Forms.Button btnAltGrupIbsCbsID7;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem1;
     }
 }
 
