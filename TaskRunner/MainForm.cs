@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using TaskRunner;
 using TaskRunner.Bat_Files;
+using TaskRunner.Entities;
 
 
 namespace TaskRunner
@@ -16,185 +17,85 @@ namespace TaskRunner
     {
         LiberacaoScript acesso = new LiberacaoScript();
         ScriptsParaCopiar scrptCopy = new ScriptsParaCopiar();
+        ExecutarSql executarSql = new ExecutarSql();
+        ExecutarBat executarBat = new ExecutarBat();
+        ButtonTexts buttonTexts = new ButtonTexts();
         public MainForm()
         {
             InitializeComponent();
             ListarServidores();
-
-            ToolTip toolTip1 = new ToolTip();
-
             //Tab2
-
             btnEmpresario.Enabled = true;
             btnObjNFCE.Enabled = true;
-
-            toolTip1.SetToolTip(this.btnTestarConexao, "Testar conexão com banco de dados");
-            toolTip1.SetToolTip(this.btnUpdateCadSys, "update cadsys set dtimplantacao = '01/01/2000'");
-            toolTip1.SetToolTip(this.btnLimparLog, "DBCC SHRINKDATABASE(Empresario, 0) WITH NO_INFOMSGS");
-            toolTip1.SetToolTip(this.btnRecriaIndice, @"
-USE EMPRESARIO
-DECLARE @COMANDO VARCHAR(MAX)
-DECLARE DB_CURSOR CURSOR FOR SELECT NAME FROM SYS.TABLES
-OPEN DB_CURSOR 
-FETCH NEXT FROM DB_CURSOR INTO @COMANDO
-WHILE @@FETCH_STATUS = 0 
-BEGIN 
-	SET @COMANDO = ('ALTER INDEX ALL ON ' + @comando + ' REBUILD')
-	EXEC (@COMANDO)
-    FETCH NEXT FROM DB_CURSOR INTO @COMANDO
-END 
-CLOSE DB_CURSOR 
-DEALLOCATE DB_CURSOR
-");
-            toolTip1.SetToolTip(this.btnRecriarEstatBanco, @"
-DECLARE @COMANDO VARCHAR(MAX)
-
-DECLARE DB_CURSOR CURSOR FOR SELECT NAME FROM SYS.TABLES ORDER BY name
-
-OPEN DB_CURSOR 
-
-FETCH NEXT FROM DB_CURSOR INTO @COMANDO
-
-WHILE @@FETCH_STATUS = 0 
-BEGIN 
-	--SET @COMANDO = ('ALTER INDEX ALL ON ' + @comando + ' REBUILD')
-	SET @COMANDO = ('UPDATE STATISTICS ' + @comando + ' WITH FULLSCAN')
-	PRINT @COMANDO
-	EXEC (@COMANDO)
-
-    FETCH NEXT FROM DB_CURSOR INTO @COMANDO
-END 
-
-CLOSE DB_CURSOR 
-DEALLOCATE DB_CURSOR
-");
-            toolTip1.SetToolTip(this.btnRemoverRegTabelaHist, @"
-DELETE HISTORICO 
-WHERE LEN(REPLACE(HISTORICO.CONTEUDO, '', '')) > 0 AND COALESCE(ORIGEMID, '') = ''
-");
-            toolTip1.SetToolTip(this.btnAltGrupIbsCbsID7, @"
-UPDATE IBSCBS
-SET
-    CSTIBSCBSID = '200',
-    CCLASSTRIBIBSCBSID = '200038',
-    PERCENTUALREDUCAOIBSUF = '60.0000',
-    PERCENTUALALIQUOTAEFETIVAIBSUF = '0.0400',
-    PERCENTUALREDUCAOIBSMUNICIPIO = '60.0000',
-    PERCENTUALREDUCAOCBS = '60.0000',
-    PERCENTUALALIQUOTACBS = '0.9000',
-    PERCENTUALALIQUOTAEFETIVACBS = '0.3600',
-    TIPOREDUCAOCBS = '0',
-    TIPOREDUCAOIBS = '0'
-WHERE
-    IBSCBSGRUPOID = '7';
-");
-
-
+            buttonTexts.SetToolTip(this.btnEmpresario, MainFormButtonTexts.btnEmpresarioText);
+            buttonTexts.SetToolTip(this.btnTestarConexao, MainFormButtonTexts.btnTestarConexaoText);
+            buttonTexts.SetToolTip(this.btnUpdateCadSys, MainFormButtonTexts.btnUpdateCadSysText);
+            buttonTexts.SetToolTip(this.btnLimparLog, MainFormButtonTexts.btnLimparLogText);
+            buttonTexts.SetToolTip(this.btnRecriaIndice, MainFormButtonTexts.btnRecriaIndiceText);
+            buttonTexts.SetToolTip(this.btnRecriarEstatBanco, MainFormButtonTexts.btnRecriarEstatBancoText);
+            buttonTexts.SetToolTip(this.btnRemoverRegTabelaHist, MainFormButtonTexts.btnRemoverRegTabelaHistText);
+            buttonTexts.SetToolTip(this.btnAltGrupIbsCbsID7, MainFormButtonTexts.btnAltGrupIbsCbsID7Text);
             //tab3
-            toolTip1.SetToolTip(this.btnResetTransportNF, "Consulta nota fiscal e seus dados de transporte e remove o endereço vinculado ao transporte da nota fiscal.");
-            toolTip1.SetToolTip(this.btnDupChaveAcesso, "Muda chave de acesso quando ocorre o erro de duplicidade de chave de acesso.");
+            buttonTexts.SetToolTip(this.btnResetTransportNF, MainFormButtonTexts.btnResetTransportNFText);
+            buttonTexts.SetToolTip(this.btnDupChaveAcesso, MainFormButtonTexts.btnDupChaveAcessoText);
         }
 
         //TAB 1 - Scripts Objetiva
-
-        private void ExecutarBatFile(string texto, Action comando)
-        {
-            DialogResult msg = MessageBox.Show($"Tem certeza que deseja {texto}?", texto, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            try
-            {
-                if (msg == DialogResult.Yes)
-                {
-                    comando.Invoke();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnUpdCustosFilial50_Click(object sender, EventArgs e)
         {
-            ExecutarBatFile(btnUpdCustosFilial50.Text, () => TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirFilial50));
+            executarBat.ExecutarBatFile(btnUpdCustosFilial50.Text, () => TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirFilial50));
         }
-
         private void btnUpdCustosEntrada_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnUpdCustosEntrada.Text, () => TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirEntrada));
-            }
+            executarBat.ExecutarBatFile(btnUpdCustosEntrada.Text, () => TempFile.ExecuteTempFile(BatFiles.AtualizarCustosAPartirEntrada));
         }
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnBackup.Text, () => TempFile.ExecuteTempFile(BatFiles.RealizarBackup));
-            }
+            executarBat.ExecutarBatFile(btnBackup.Text, () => TempFile.ExecuteTempFile(BatFiles.RealizarBackup));
         }
         private void btnEndVarejo_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnEndVarejo.Text, () => TempFile.ExecuteTempFile(BatFiles.FinalizarTarefasObjVarejo));
-            }
+            executarBat.ExecutarBatFile(btnEndVarejo.Text, () => TempFile.ExecuteTempFile(BatFiles.FinalizarTarefasObjVarejo));
         }
         private void btnEndUniDanfe_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnEndUniDanfe.Text, () => TempFile.ExecuteTempFile(BatFiles.EncerrarUniDanfe));
-            }
+            executarBat.ExecutarBatFile(btnEndUniDanfe.Text, () => TempFile.ExecuteTempFile(BatFiles.EncerrarUniDanfe));
         }
         private void btnDellDLLECF_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnDellDLLECF.Text, () => TempFile.ExecuteTempFile(BatFiles.DeleteDllECF));
-            }
+            executarBat.ExecutarBatFile(btnDellDLLECF.Text, () => TempFile.ExecuteTempFile(BatFiles.DeleteDllECF));
         }
         private void btnClearFilaImpressao_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnClearFilaImpressao.Text, () => TempFile.ExecuteTempFile(BatFiles.LimparFilaImpressao));
-            }
+            executarBat.ExecutarBatFile(btnClearFilaImpressao.Text, () => TempFile.ExecuteTempFile(BatFiles.LimparFilaImpressao));
         }
         private void btnPermObjC_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnPermObjC.Text, () => TempFile.ExecuteTempFile(BatFiles.PermissaoObjC));
-            }
+            executarBat.ExecutarBatFile(btnPermObjC.Text, () => TempFile.ExecuteTempFile(BatFiles.PermissaoObjC));
         }
         private void btnPermObjD_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnPermObjD.Text, () => TempFile.ExecuteTempFile(BatFiles.PermissaoObjD));
-            }
+            executarBat.ExecutarBatFile(btnPermObjD.Text, () => TempFile.ExecuteTempFile(BatFiles.PermissaoObjD));
         }
         private void btnStartSQLService_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnStartSQLService.Text, () => TempFile.ExecuteTempFile(BatFiles.iniciarSqlService));
-            }
+            executarBat.ExecutarBatFile(btnStartSQLService.Text, () => TempFile.ExecuteTempFile(BatFiles.iniciarSqlService));
         }
         private void btnLibSqlFirewall_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnLibSqlFirewall.Text, () => TempFile.ExecuteTempFile(BatFiles.LiberarSQLFirewall));
-            }
+            executarBat.ExecutarBatFile(btnLibSqlFirewall.Text, () => TempFile.ExecuteTempFile(BatFiles.LiberarSQLFirewall));
         }
         private void btnRecEstatistBD_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnRecEstatistBD.Text, () => TempFile.ExecuteTempFile(BatFiles.RecriaEstatisticaBD));
-            }
+            executarBat.ExecutarBatFile(btnRecEstatistBD.Text, () => TempFile.ExecuteTempFile(BatFiles.RecriaEstatisticaBD));
         }
         private void btnIndexBD_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnIndexBD.Text, () => TempFile.ExecuteTempFile(BatFiles.IndexarBanco));
-            }
+            executarBat.ExecutarBatFile(btnIndexBD.Text, () => TempFile.ExecuteTempFile(BatFiles.IndexarBanco));
         }
         private void btnDellRegistroObjetiva_Click(object sender, EventArgs e)
         {
-            {
-                ExecutarBatFile(btnDellRegistroObjetiva.Text, () => TempFile.ExecuteTempFile(BatFiles.ExcluirRegistroObjetiva));
-            }
+            executarBat.ExecutarBatFile(btnDellRegistroObjetiva.Text, () => TempFile.ExecuteTempFile(BatFiles.ExcluirRegistroObjetiva));
         }
 
         //TAB 2 - SQL Scripts
@@ -236,30 +137,6 @@ WHERE
                 return false;
             }
             return true;
-        }
-
-        private void ExecutarScript(string titulo, Action comando)
-        {
-            if (ValidarServerBanco())
-            {
-                acesso.ShowDialog();
-                if (acesso.DialogResult == DialogResult.OK)
-                {
-                    DialogResult result = MessageBox.Show($"Tem certeza que deseja executar o comando {titulo}?", titulo, MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            comando.Invoke();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Não foi possivel executar: \n" + ex, "Error");
-                        }
-                    }
-                }
-            }
         }
 
         private void btnTestarConexao_Click(object sender, EventArgs e)
@@ -310,36 +187,36 @@ WHERE
 
         private void btnUpdateCadSys_Click(object sender, EventArgs e)
         {
-            ExecutarScript("UpdateCadSys", Query.UpdateCadSys);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "UpdateCadSys", Query.UpdateCadSys);
         }
         private void btnAttIbsCbsNCM_Click(object sender, EventArgs e)
         {
-            ExecutarScript("ATUALIZA IBSCBS COM BASE NO NCM", Query.AtualizaIbsCbsNCM);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "ATUALIZA IBSCBS COM BASE NO NCM", Query.AtualizaIbsCbsNCM);
         }
 
         private void btnLimparLog_Click(object sender, EventArgs e)
         {
-            ExecutarScript("Limpar Log", Query.LimparLog);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "Limpar Log", Query.LimparLog);
         }
 
         private void btnRecriaIndice_Click_1(object sender, EventArgs e)
         {
-            ExecutarScript("Recria Indice", Query.RecriaIndice);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "Recria Indice", Query.RecriaIndice);
         }
 
         private void btnRecriarEstatBanco_Click(object sender, EventArgs e)
         {
-            ExecutarScript("Recriar Estatisticas Banco", Query.RecriaEstatisticasBanco);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "Recriar Estatisticas Banco", Query.RecriaEstatisticasBanco);
         }
 
         private void btnRemoverRegTabelaHist_Click(object sender, EventArgs e)
         {
-            ExecutarScript("Remover Registros Tabela", Query.RemoverRegistrosTabela);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "Remover Registros Tabela", Query.RemoverRegistrosTabela);
         }
 
         private void btnAltGrupIbsCbsID7_Click(object sender, EventArgs e)
         {
-            ExecutarScript("Alterar Grupo IBSCBSGRUPOID = '7'", Query.AlterarGrupoIBSCBSID7);
+            executarSql.ExecutarScript(ValidarServerBanco, acesso, "Alterar Grupo IBSCBSID = '7'", Query.AlterarGrupoIBSCBSID7);
         }
 
         //TAB 3 - Scripts Text

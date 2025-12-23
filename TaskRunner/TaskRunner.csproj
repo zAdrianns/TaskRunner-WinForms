@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Entities\BatFiles\BatFiles.cs" />
     <Compile Include="Entities\CopySQLScripts\ScriptsTexts.cs" />
+    <Compile Include="Entities\MainFormButtonTexts.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +88,9 @@
     <Compile Include="ScriptsParaCopiar.Designer.cs">
       <DependentUpon>ScriptsParaCopiar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ButtonTexts.cs" />
+    <Compile Include="Utilities\ExecutarBat.cs" />
+    <Compile Include="Utilities\ExecutarSql.cs" />
     <Compile Include="Utilities\SQL\Query.cs" />
     <Compile Include="Utilities\SQL\SqlConn.cs" />
     <Compile Include="Utilities\TempFile.cs" />
