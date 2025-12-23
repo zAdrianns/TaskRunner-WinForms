@@ -9,7 +9,6 @@ namespace TaskRunner.Entities
     internal class MainFormButtonTexts
     {
         //TAB2
-
         public static string btnEmpresarioText = "Selecionar banco de dados Empresario";
         public static string btnTestarConexaoText = "Testar conexão";
         public static string btnUpdateCadSysText = "update cadsys set dtimplantacao = '01/01/2000'";
